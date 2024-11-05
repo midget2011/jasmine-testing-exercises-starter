@@ -38,8 +38,7 @@ function setupIntialValues() {
 function update() {
   let currentValues = getCurrentUIValues();
   console.log(currentValues);
-  calculateMonthlyPayment(currentValues);
-
+  updateMonthly(calculateMonthlyPayment(currentValues));
 }
 
 // Given an object of values (a value has amount, years and rate ),
@@ -52,7 +51,7 @@ function calculateMonthlyPayment(values) {
   let monthlyAPR = (values.rate/100)/12;
   let months = values.years * 12;
   // console.log(monthlyAPR.value, 1+1);
-  let payment =  (values.amount * monthlyAPR)/(1-(Math.pow((1+monthlyAPR),-months)))
+  let payment =  ((values.amount * monthlyAPR)/(1-(Math.pow((1+monthlyAPR),-months)))).toFixed(2);
   console.log(payment);
   return payment
 }
@@ -60,4 +59,7 @@ function calculateMonthlyPayment(values) {
 // Given a string representing the monthly payment value,
 // update the UI to show the value.
 function updateMonthly(monthly) {
+  let viewPayment = document.getElementById("monthly-payment");
+  viewPayment.innerText = "$" + monthly;
+  return
 }
