@@ -39,7 +39,6 @@ function update() {
   let currentValues = getCurrentUIValues();
   console.log(currentValues);
   updateMonthly(calculateMonthlyPayment(currentValues));
-
 }
 
 // Given an object of values (a value has amount, years and rate ),
@@ -60,10 +59,7 @@ function calculateMonthlyPayment(values) {
 // Given a string representing the monthly payment value,
 // update the UI to show the value.
 function updateMonthly(monthly) {
-  console.log(monthly)
-  let monthlypayment = document.getElementById("monthly-payment");
-  monthlypayment.innerText = "$" + monthly;
-
-  // monthly.value
-  
+  let viewPayment = document.getElementById("monthly-payment");
+  viewPayment.innerText = "$" + monthly;
+  return
 }
